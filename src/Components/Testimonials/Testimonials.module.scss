@@ -1,0 +1,32 @@
+@import "../../Styles/Mixins.scss";
+@import "../../Styles/Variables.scss";
+
+.testimonials {
+  padding: 12rem 0;
+  background-color: $light-color;
+}
+
+.container {
+  @include container();
+}
+
+.headingTestimonial {
+  @include heading(4.6rem, 9rem, 1);
+  text-align: center;
+}
+
+.slider {
+  padding: 1rem;
+}
+
+.btnAdd {
+  @include btn();
+  display: block;
+  margin: 5rem auto 0 auto;
+}
+
+.added {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}

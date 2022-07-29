@@ -1,0 +1,20 @@
+@import "../../Styles/Mixins.scss";
+@import "../../Styles/Variables.scss";
+
+.container {
+  @include container();
+
+  .errorHeading {
+    @include heading(2.4rem, 1rem, 1);
+  }
+
+  .errorText {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .errorLink {
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+}

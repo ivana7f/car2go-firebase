@@ -1,0 +1,74 @@
+@import "../../../Styles/Mixins.scss";
+@import "../../../Styles/Variables.scss";
+
+.form {
+  margin-top: 12rem;
+
+  label {
+    font-size: 1.6rem;
+    display: block;
+  }
+}
+
+.selectInput {
+  padding: 1rem;
+  font-family: inherit;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  width: 40%;
+  margin: 1rem 2rem 2rem 0;
+  background-color: $light-color;
+}
+
+.input {
+  width: 40%;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  margin: 1rem 2rem 2rem 0;
+  border: 1px solid;
+  background-color: $light-color;
+}
+
+.date {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  margin: 1rem 1rem 1rem 0;
+  border: 1px solid;
+  background-color: $light-color;
+}
+
+.dates {
+  display: flex;
+  gap: 14rem;
+  margin: 1rem 1rem 1rem 0;
+}
+
+.btn {
+  @include btn();
+  margin-top: 2rem;
+}
+
+.invalidInput {
+  font-size: 1.6rem;
+  color: $error;
+}
+
+@media (max-width: 32em) {
+  .form {
+    div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .selectInput,
+    .input {
+      width: 100%;
+    }
+    .dates {
+      gap: 1rem;
+    }
+  }
+}

@@ -1,0 +1,94 @@
+@import "../../../Styles/Mixins.scss";
+@import "../../../Styles/Variables.scss";
+
+.container {
+  @include container();
+  margin-top: 3rem;
+}
+
+.car {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 3rem;
+}
+
+.img {
+  img {
+    width: 100%;
+  }
+}
+
+.carDetails {
+  background-color: $light-color;
+  padding: 2rem 4rem;
+  font-size: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  .detail {
+    border-bottom: 1px solid #adb5bd;
+    padding-bottom: 1rem;
+
+    span {
+      font-weight: $semi-bold-font-weight;
+    }
+  }
+}
+
+.btnEdit {
+  @include btn();
+  float: right;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.btnConfirm {
+  @include btn();
+  margin-right: 3rem;
+}
+
+.btnCancel {
+  @include btn();
+  background-color: transparent;
+  color: $text-color-dark;
+  box-shadow: inset 0 0 0 1px $dark-color;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.field {
+  padding: 5px 0 5px 10px;
+  font-family: inherit;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  border: 1px solid #ced4da;
+  width: 35%;
+  margin-left: 0.5rem;
+}
+
+.invalidInput {
+  font-size: 1rem;
+  margin-left: 5px;
+  color: $error;
+}
+
+@media (max-width: 53em) {
+  .car {
+    display: block;
+  }
+
+  .sliderContainer {
+    height: 40rem;
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 32em) {
+  .sliderContainer {
+    height: 30rem;
+  }
+}

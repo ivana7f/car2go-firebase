@@ -1,0 +1,42 @@
+@import "../../Styles/Mixins.scss";
+@import "../../Styles/Variables.scss";
+
+.hero {
+  background-image: linear-gradient(
+      to right bottom,
+      hsla(207, 86%, 57%, 0.371),
+      hsla(207, 65%, 46%, 0.334)
+    ),
+    url("../../img/background.jpg");
+  background-size: cover;
+  height: 90vh;
+
+  .container {
+    max-width: 70%;
+    margin: 0 auto;
+    @include flex-center();
+    height: 100%;
+  }
+
+  h1 {
+    @include heading(5.2rem, 5rem, 1.1);
+    color: $white;
+    text-align: center;
+  }
+
+  p {
+    font-size: 2rem;
+    margin-bottom: 5rem;
+    line-height: 1.8;
+    color: $white;
+    text-align: center;
+  }
+}
+
+@media (max-width: 53em) {
+  .container {
+    h1 {
+      font-size: 4rem;
+    }
+  }
+}

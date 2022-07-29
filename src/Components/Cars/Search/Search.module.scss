@@ -1,0 +1,71 @@
+@import "../../../Styles/Mixins.scss";
+@import "../../../Styles/Variables.scss";
+
+.container {
+  @include container();
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  background-color: $light-color;
+  height: 8rem;
+  border-radius: 10px;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+
+  .selectField {
+    width: 15%;
+    padding: 0.7rem;
+    font-family: inherit;
+    border-radius: 15px;
+    font-size: 1.6rem;
+    border: 1px solid #ced4da;
+  }
+
+  .inputField {
+    padding: 0.8rem 2rem;
+    border-radius: 15px;
+    font-size: 1.6rem;
+    border: 1px solid #ced4da;
+  }
+}
+
+.btn {
+  @include btn();
+  padding: 0.8rem 4rem;
+  font-size: 1.8rem;
+}
+
+@media (max-width: 53em) {
+  .container {
+    height: 100%;
+  }
+
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 2rem 0;
+
+    .inputField,
+    .selectField {
+      width: 100%;
+    }
+
+    .btn {
+      grid-column: 2/3;
+      justify-self: end;
+    }
+  }
+}
+
+@media (max-width: 32em) {
+  .form {
+    display: flex;
+    flex-direction: column;
+  }
+}

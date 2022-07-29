@@ -1,0 +1,70 @@
+@import "../../../Styles/Mixins.scss";
+@import "../../../Styles/Variables.scss";
+
+.aboutPage {
+  @include container();
+  margin-top: 5rem;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5rem;
+  align-items: center;
+  justify-content: center;
+
+  h2 {
+    @include heading(4rem, 3rem, 1);
+  }
+  p {
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+
+  .aboutImg {
+    width: 100%;
+  }
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14rem;
+  margin-top: 7rem;
+
+  .counterItem {
+    width: 33%;
+    @include flex-center();
+    gap: 1rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+}
+
+.number {
+  font-size: 3rem;
+}
+
+@media (max-width: 53em) {
+  .about {
+    display: block;
+    padding: 0 3rem;
+
+    h2 {
+      text-align: center;
+    }
+    .aboutImg {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 32em) {
+  .counter {
+    flex-direction: column;
+    gap: 4rem;
+  }
+}

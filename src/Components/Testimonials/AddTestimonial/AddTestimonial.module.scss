@@ -1,0 +1,25 @@
+@import "../../../Styles/Mixins.scss";
+@import "../../../Styles/Variables.scss";
+
+.addTestimonial {
+  max-width: 40%;
+  padding: 1rem;
+  margin: 4rem auto 2rem auto;
+  border: solid #ced4da 1px;
+  border-radius: 20px;
+  @include flex-center();
+}
+
+.textarea {
+  @include text-area();
+}
+
+.submitBtn {
+  @include btn();
+  display: block;
+  margin: 1rem auto 2rem auto;
+}
+
+.error {
+  @include error();
+}

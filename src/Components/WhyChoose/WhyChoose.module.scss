@@ -1,0 +1,77 @@
+@import "../../Styles/Mixins.scss";
+@import "../../Styles/Variables.scss";
+
+.section {
+  padding: 9rem 0 12rem 0;
+}
+
+.container {
+  @include container();
+
+  h2 {
+    @include heading(4.6rem, 9rem, 1);
+    text-align: center;
+  }
+
+  .boxes {
+    display: flex;
+    gap: 6rem;
+
+    .box {
+      @include flex-center();
+      width: 33%;
+      height: 25rem;
+      padding: 0 1.6rem;
+      border-radius: 20px;
+
+      &:nth-child(2) {
+        box-shadow: 0 1.6rem 4.8rem rgba(0, 0, 0, 0.15);
+      }
+
+      h3 {
+        font-weight: $medium-font-weight;
+        font-size: 2.2rem;
+        margin: 2rem 0;
+        text-align: center;
+
+        line-height: 1.2;
+      }
+
+      p {
+        width: 80%;
+        font-size: 1.6rem;
+        text-align: center;
+        line-height: 1.5;
+        color: #777;
+      }
+    }
+  }
+}
+
+@media (max-width: 53em) {
+  .container {
+    h2 {
+      font-size: 4rem;
+    }
+    .boxes {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .box {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media (max-width: 32em) {
+  .container {
+    .boxes {
+      .box {
+        width: 70%;
+        height: 28rem;
+      }
+    }
+  }
+}

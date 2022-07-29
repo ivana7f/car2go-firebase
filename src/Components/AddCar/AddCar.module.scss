@@ -1,0 +1,83 @@
+@import "../../Styles/Mixins.scss";
+@import "../../Styles/Variables.scss";
+
+.container {
+  @include container();
+
+  h2 {
+    @include heading(2.4rem, 3rem, 1);
+    margin-top: 2rem;
+    text-align: center;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+
+  .selectField,
+  .inputField {
+    padding: 0.7rem;
+    font-family: inherit;
+    border-radius: 15px;
+    font-size: 1.6rem;
+    border: 1px solid #ced4da;
+    width: 33%;
+  }
+
+  .label {
+    font-size: 1.6rem;
+    margin-right: 1rem;
+    font-weight: $medium-font-weight;
+  }
+}
+
+.btn {
+  @include btn();
+  display: block;
+  margin-top: 2rem;
+  align-self: flex-end;
+}
+
+.invalidInput {
+  @include invalid-input();
+}
+
+.card {
+  background-color: $light-color;
+  padding: 2rem 2rem 2rem 7rem;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  border-radius: 10px;
+}
+
+.success {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.btnAgain {
+  @include btn();
+  display: block;
+  margin: 3rem auto 0 auto;
+}
+
+@media (max-width: 53em) {
+  .card {
+    flex-wrap: nowrap;
+    height: 100%;
+  }
+}
+
+@media (max-width: 32em) {
+  .form {
+    .selectField,
+    .inputField {
+      width: 60%;
+    }
+  }
+}

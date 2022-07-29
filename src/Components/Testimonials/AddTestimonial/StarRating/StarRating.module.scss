@@ -1,0 +1,11 @@
+@import "../../../../Styles/Mixins.scss";
+@import "../../../../Styles/Variables.scss";
+
+.star {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.radio {
+  display: none;
+}

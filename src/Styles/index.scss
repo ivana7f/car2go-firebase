@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap");
+@import "./Variables.scss";
+
+/* GENERAL RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.5rem hsla(207, 86%, 57%, 0.3);
+}
+
+html {
+  /* 10px */
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  line-height: 1;
+  font-weight: $default-font-weight;
+  color: $text-color-primary;
+  overflow-x: hidden;
+}

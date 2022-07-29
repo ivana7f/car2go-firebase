@@ -1,0 +1,27 @@
+@import "../../Styles/Mixins.scss";
+@import "../../Styles/Variables.scss";
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loadingSpinner {
+  width: 5rem;
+  height: 5rem;
+  border: 10px solid $very-light-gray;
+  border-top: 10px solid #333;
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
+}
+
+.spinnerContainer {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 30rem;
+}

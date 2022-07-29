@@ -1,0 +1,145 @@
+@import "../../../Styles/Mixins.scss";
+@import "../../../Styles/Variables.scss";
+
+.container {
+  @include container();
+  padding: 0;
+
+  ul {
+    list-style: none;
+  }
+}
+
+.card {
+  background-color: $light-color;
+  display: grid;
+  grid-template-columns: 2fr 3fr 1fr;
+  column-gap: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  padding: 2rem 1rem 1rem 1rem;
+
+  .cardItem {
+    h3 {
+      @include heading(2.2rem, 2rem, 1);
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.carDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 80%;
+  row-gap: 2.4rem;
+
+  p {
+    font-size: 2rem;
+  }
+}
+
+.btn {
+  @include btn();
+  margin: 0 0 2rem 0;
+}
+
+.priceBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-right: 1rem;
+
+  .price {
+    font-size: 3.5rem;
+  }
+
+  div {
+    p {
+      &:nth-child(2) {
+        font-size: 1.3rem;
+        text-align: end;
+      }
+    }
+  }
+}
+
+@media (max-width: 75em) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 53em) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem 2rem 2rem;
+
+    .cardItem {
+      width: 100%;
+
+      h3 {
+        text-align: center;
+      }
+    }
+
+    img {
+      width: 70%;
+      display: block;
+      margin: 0 auto 2rem auto;
+    }
+  }
+  .carDetails {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .priceBox {
+    margin-top: 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .btn {
+      margin: 0;
+    }
+
+    .price {
+      display: inline;
+      margin-right: 1rem;
+    }
+
+    div {
+      p {
+        &:nth-child(2) {
+          display: inline;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 32em) {
+  .card {
+    img {
+      width: 100%;
+    }
+  }
+
+  .carDetails {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .priceBox {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

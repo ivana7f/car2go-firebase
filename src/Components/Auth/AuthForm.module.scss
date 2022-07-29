@@ -1,0 +1,49 @@
+@import "../../Styles/Mixins.scss";
+@import "../../Styles/Variables.scss";
+
+.auth {
+  @include container();
+}
+
+.authForm {
+  width: 50%;
+  margin: 3rem auto;
+  padding: 5rem 3rem;
+  background-color: $light-color;
+  border-radius: 10px;
+
+  h2 {
+    @include heading(3rem, 3rem, 1);
+    text-align: center;
+  }
+}
+
+.toggleBtn {
+  display: block;
+  margin: 2rem auto 0 auto;
+  border: none;
+  background-color: inherit;
+  color: $darker-color;
+  cursor: pointer;
+  font-size: 1.6rem;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.error {
+  @include error();
+}
+
+@media (max-width: 53em) {
+  .authForm {
+    width: 60%;
+  }
+}
+
+@media (max-width: 32em) {
+  .authForm {
+    width: 80%;
+  }
+}

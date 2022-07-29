@@ -1,0 +1,136 @@
+@import "../../../Styles/Mixins.scss";
+@import "../../../Styles/Variables.scss";
+
+.contactPage {
+  @include container();
+}
+
+.contactForm {
+  width: 50%;
+  margin: 3rem auto;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  h2 {
+    @include heading(5rem, 3rem, 1);
+    text-align: center;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 1.6rem 2rem;
+  border-radius: 15px;
+  font-size: 1.6rem;
+  border: none;
+  background-color: $light-color;
+}
+
+.message {
+  @include text-area();
+  margin-top: 0;
+  padding: 1rem 2rem;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 15px;
+  background-color: $light-color;
+}
+
+.sendBtn {
+  @include btn();
+  display: block;
+  margin: 0 auto;
+}
+
+.contactInfo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14rem;
+  margin-top: 6rem;
+
+  .infoBox {
+    @include flex-center();
+    width: 33%;
+    gap: 2rem;
+
+    p {
+      font-size: 2rem;
+      line-height: 1.4;
+      text-align: center;
+    }
+  }
+}
+
+.success {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.invalidInput {
+  border: 1px solid $error;
+  background-color: #fddddd;
+  width: 100%;
+  padding: 1.6rem 2rem;
+  border-radius: 15px;
+  font-size: 1.6rem;
+}
+
+.invalidMessage {
+  @include text-area();
+  border: 1px solid $error;
+  background-color: #fddddd;
+  margin-top: 0;
+  padding: 1rem 2rem;
+  display: block;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.invalidInputText {
+  margin: 0;
+  color: $error;
+  font-size: 1.6rem;
+}
+
+.map {
+  margin-top: 4rem;
+}
+
+@media (max-width: 53em) {
+  .contactForm {
+    width: 70%;
+
+    h2 {
+      font-size: 4rem;
+    }
+  }
+
+  .contactInfo {
+    gap: 4rem;
+    .infoBox {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 32em) {
+  .contactForm {
+    width: 80%;
+  }
+}
+
+@media (max-width: 32em) {
+  .contactInfo {
+    flex-direction: column;
+    align-items: center;
+    .infoBox {
+      width: 50%;
+    }
+  }
+}

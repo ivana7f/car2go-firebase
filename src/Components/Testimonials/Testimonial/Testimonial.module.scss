@@ -1,0 +1,13 @@
+@import "../../../Styles/Mixins.scss";
+@import "../../../Styles/Variables.scss";
+
+.testimonialContainer {
+  @include flex-center();
+}
+
+.text {
+  font-size: 2rem;
+  line-height: 1.5;
+  margin: 2rem;
+  text-align: center;
+}
