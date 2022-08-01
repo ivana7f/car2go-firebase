@@ -14,7 +14,8 @@ function AddTestimonial(props) {
   function submitHandler(e) {
     e.preventDefault();
 
-    if (message.trim() === "") {
+    if (message.trim() === "" || rating === null) {
+      setError(true);
       return;
     }
 
