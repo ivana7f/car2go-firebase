@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Pagination from "../Pagination/Pagination";
 import CarsList from "./CarsList/CarsList";
 import Search from "./Search/Search";
@@ -6,8 +6,11 @@ import cloneDeep from "lodash/cloneDeep";
 import useFetch from "../../hooks/useFetch";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import NotFound from "../NotFound/NotFound";
+import ValuesContext from "../../store/values-context";
 
 function Cars() {
+  const Ctx = useContext(ValuesContext);
+
   const {
     data: cars,
     isLoading,
@@ -21,6 +24,18 @@ function Cars() {
 
   const [currentPage, setCurrenPage] = useState(1);
   const [carsPerPage] = useState(5);
+
+  useEffect(() => {
+    if (Ctx.carBrand !== "") {
+      let filteredArray = cloneDeep(cars);
+      filteredArray = filteredArray.filter(
+        (car) => car[1].brand === Ctx.carBrand
+      );
+
+      setFilteredCars(filteredArray);
+      setIsFiltered(true);
+    }
+  }, [cars]);
 
   // when search button is clicked
   function onFilter(filterData) {
