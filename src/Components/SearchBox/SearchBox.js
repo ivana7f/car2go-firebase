@@ -20,10 +20,9 @@ function SearchBox() {
         <select
           id="cars"
           name="cars"
-          required
           onChange={(e) => valuesCtx.setCarBrand(e.target.value)}
         >
-          <option value="">Please select one option</option>
+          <option value="">All brands</option>
           <option value="Mercedes">Mercedes</option>
           <option value="Audi">Audi</option>
           <option value="BMW">BMW</option>

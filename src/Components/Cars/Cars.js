@@ -70,6 +70,7 @@ function Cars() {
 
     setFilteredCars(filteredArray);
     setIsFiltered(true);
+    setCurrenPage(1);
   }
 
   // paginationn

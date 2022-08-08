@@ -67,6 +67,11 @@
   }
 }
 
+.notFound {
+  font-size: 3rem;
+  @include flex-center();
+}
+
 @media (max-width: 75em) {
   .container {
     padding: 0 2rem;

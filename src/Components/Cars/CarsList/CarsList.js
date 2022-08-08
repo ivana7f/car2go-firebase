@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import classes from "./CarsList.module.scss";
 import car1 from "../../../img/car.png";
@@ -8,9 +8,16 @@ import { IoSnow } from "react-icons/io5";
 import { FaGasPump } from "react-icons/fa";
 import { BsGear } from "react-icons/bs";
 import { BsCalendarCheck } from "react-icons/bs";
+import ValuesContext from "../../../store/values-context";
 
 function CarsList(props) {
   const cars = props.cars;
+  const Ctx = useContext(ValuesContext);
+  Ctx.setCarBrand("");
+
+  if (cars.length === 0) {
+    return <div className={classes.notFound}>No cars found</div>;
+  }
 
   return (
     <section className={classes.container}>
