@@ -4,6 +4,8 @@ import logo from "../../img/logo_car2go1.png";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 function Footer() {
   return (
@@ -21,24 +23,32 @@ function Footer() {
           <h2 className={classes.footerHeading}>Sitemap</h2>
           <ul className={classes.footerList}>
             <li>
-              <a href="#" className={classes.footerLink}>
+              <HashLink smooth to={"/#top"} className={classes.footerLink}>
                 Home
-              </a>
+              </HashLink>
             </li>
             <li>
-              <a href="#" className={classes.footerLink}>
+              <HashLink
+                smooth
+                to={"/#howitworks"}
+                className={classes.footerLink}
+              >
                 How It Works
-              </a>
+              </HashLink>
             </li>
             <li>
-              <a href="#" className={classes.footerLink}>
+              <HashLink to="/cars/#top" className={classes.footerLink}>
                 Cars
-              </a>
+              </HashLink>
             </li>
             <li>
-              <a href="#" className={classes.footerLink}>
+              <HashLink
+                smooth
+                to={"/#testimonials"}
+                className={classes.footerLink}
+              >
                 Testimonials
-              </a>
+              </HashLink>
             </li>
           </ul>
         </div>
@@ -92,17 +102,17 @@ function Footer() {
           <div>
             <ul>
               <li>
-                <a href="#">
+                <a href="https://www.facebook.com/" target="_blank">
                   <FaFacebookF size="2rem" color="#1f5c90" />
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="https://twitter.com/" target="_blank">
                   <FaTwitter size="2rem" color="#1f5c90" />
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href="https://www.instagram.com/" target="_blank">
                   <FaInstagram size="2rem" color="#1f5c90" />
                 </a>
               </li>

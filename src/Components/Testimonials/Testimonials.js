@@ -54,7 +54,7 @@ function Testimonials() {
   }
 
   return (
-    <section className={classes.testimonials}>
+    <section className={classes.testimonials} id="testimonials">
       <div className={classes.container}>
         <h2 className={classes.headingTestimonial}>Testimonials</h2>
         {error && <NotFound error={error} />}

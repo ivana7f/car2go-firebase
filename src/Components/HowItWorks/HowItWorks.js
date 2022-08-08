@@ -7,7 +7,7 @@ import { GiCartwheel } from "react-icons/gi";
 
 function HowItWorks() {
   return (
-    <section className={classes.section}>
+    <section className={classes.section} id="howitworks">
       <div className={classes.container}>
         <span className={classes.subheading}>How it works </span>
         <h2>Make 4 simple steps to rent a car!</h2>
