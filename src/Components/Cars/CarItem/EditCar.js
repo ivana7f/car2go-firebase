@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./CarItem.module.scss";
 import useHttp from "../../../hooks/useHttp";
 import SelectCars from "../../Inputs/SelectCars";
+import SelectNumberValue from "../../Inputs/SelectNumberValue";
 
 function EditCar(props) {
   const car = props.car;
@@ -24,7 +25,6 @@ function EditCar(props) {
     brand: brand,
     model: model,
     year: year,
-    engine_capacity: car.engine_capacity,
     gearbox: gearbox,
     fuel: fuel,
     doors: doors,
@@ -103,32 +103,25 @@ function EditCar(props) {
       </div>
       <div className={classes.detail}>
         <span>Seats:</span>
-        <select
+        <SelectNumberValue
           className={classes.field}
           required
           value={seats}
           onChange={(e) => setSeats(Number(e.target.value))}
-        >
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-        </select>
+          beginn={4}
+          end={9}
+        />
       </div>
       <div className={classes.detail}>
         <span>Doors:</span>
-        <select
+        <SelectNumberValue
           className={classes.field}
           required
           value={doors}
           onChange={(e) => setDoors(Number(e.target.value))}
-        >
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
+          beginn={3}
+          end={6}
+        />
       </div>
       <div className={classes.detail}>
         <span>Air Conditioning:</span>
@@ -182,35 +175,14 @@ function EditCar(props) {
       </div>
       <div className={classes.detail}>
         <span>Year:</span>
-        <select
+        <SelectNumberValue
           className={classes.field}
           required
           value={year}
           onChange={(e) => setYear(Number(e.target.value))}
-        >
-          <option value="2000">2000</option>
-          <option value="2001">2001</option>
-          <option value="2002">2002</option>
-          <option value="2003">2003</option>
-          <option value="2004">2004</option>
-          <option value="2005">2005</option>
-          <option value="2006">2006</option>
-          <option value="2007">2007</option>
-          <option value="2008">2008</option>
-          <option value="2009">2009</option>
-          <option value="2010">2010</option>
-          <option value="2011">2011</option>
-          <option value="2012">2012</option>
-          <option value="2013">2013</option>
-          <option value="2014">2014</option>
-          <option value="2015">2015</option>
-          <option value="2016">2016</option>
-          <option value="2017">2017</option>
-          <option value="2018">2018</option>
-          <option value="2019">2019</option>
-          <option value="2020">2020</option>
-          <option value="2021">2021</option>
-        </select>
+          beginn={2000}
+          end={new Date().getFullYear()}
+        />
       </div>
       <div className={classes.detail}>
         <span>Price:</span>

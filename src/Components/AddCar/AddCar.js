@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "./AddCar.module.scss";
 import useHttp from "../../hooks/useHttp";
 import SelectCars from "../Inputs/SelectCars";
+import SelectNumberValue from "../Inputs/SelectNumberValue";
 
 function AddCar() {
   const [brand, setBrand] = useState();
@@ -11,7 +12,6 @@ function AddCar() {
   const [year, setYear] = useState();
   const [gearbox, setGearbox] = useState();
   const [fuel, setFuel] = useState();
-  const [engine, setEngine] = useState();
   const [doors, setDoors] = useState();
   const [seats, setSeats] = useState();
   const [ac, setAc] = useState();
@@ -22,17 +22,16 @@ function AddCar() {
   const [successAdding, setSuccessAdding] = useState(false);
 
   const carData = {
-    brand: brand,
-    model: model,
-    year: year,
-    engine_capacity: engine,
-    gearbox: gearbox,
-    fuel: fuel,
-    doors: doors,
-    seats: seats,
-    price: price,
-    ac: ac,
-    abs: abs,
+    brand,
+    model,
+    year,
+    gearbox,
+    fuel,
+    doors,
+    seats,
+    price,
+    ac,
+    abs,
   };
 
   function dataHandling() {
@@ -143,36 +142,15 @@ function AddCar() {
               <label htmlFor="year" className={classes.label}>
                 Year
               </label>
-              <select
+              <SelectNumberValue
                 id="year"
                 className={classes.selectField}
                 required
                 onChange={(e) => setYear(Number(e.target.value))}
-              >
-                <option value="">Select year</option>
-                <option value="2000">2000</option>
-                <option value="2001">2001</option>
-                <option value="2002">2002</option>
-                <option value="2003">2003</option>
-                <option value="2004">2004</option>
-                <option value="2005">2005</option>
-                <option value="2006">2006</option>
-                <option value="2007">2007</option>
-                <option value="2008">2008</option>
-                <option value="2009">2009</option>
-                <option value="2010">2010</option>
-                <option value="2011">2011</option>
-                <option value="2012">2012</option>
-                <option value="2013">2013</option>
-                <option value="2014">2014</option>
-                <option value="2015">2015</option>
-                <option value="2016">2016</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-              </select>
+                beginn={2000}
+                end={new Date().getFullYear()}
+                emptyvalue="true"
+              />
             </div>
 
             <div>
@@ -210,68 +188,33 @@ function AddCar() {
             </div>
 
             <div>
-              <label htmlFor="engine" className={classes.label}>
-                Engine capacity
-              </label>
-              <select
-                id="engine"
-                className={classes.selectField}
-                required
-                onChange={(e) => setEngine(Number(e.target.value))}
-              >
-                <option value="">Select</option>
-                <option value="1000">1000</option>
-                <option value="1100">1100</option>
-                <option value="1200">1200</option>
-                <option value="1300">1300</option>
-                <option value="1400">1400</option>
-                <option value="1500">1500</option>
-                <option value="1600">1600</option>
-                <option value="1700">1700</option>
-                <option value="1800">1800</option>
-                <option value="1900">1900</option>
-                <option value="2000">2000</option>
-                <option value="2100">2100</option>
-                <option value="2200">2200</option>
-                <option value="2300">2300</option>
-              </select>
-            </div>
-
-            <div>
               <label htmlFor="doors" className={classes.label}>
                 Doors
               </label>
-              <select
+              <SelectNumberValue
                 id="doors"
                 className={classes.selectField}
                 required
                 onChange={(e) => setDoors(Number(e.target.value))}
-              >
-                <option value="">Select</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
+                beginn={3}
+                end={6}
+                emptyvalue="true"
+              />
             </div>
 
             <div>
               <label htmlFor="seats" className={classes.label}>
                 Seats
               </label>
-              <select
+              <SelectNumberValue
                 id="seats"
                 className={classes.selectField}
                 required
                 onChange={(e) => setSeats(Number(e.target.value))}
-              >
-                <option value="">Select</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-              </select>
+                beginn={4}
+                end={9}
+                emptyvalue="true"
+              />
             </div>
 
             <div>

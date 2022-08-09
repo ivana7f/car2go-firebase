@@ -10,7 +10,6 @@ function Search(props) {
   const [sort, setSort] = useState("");
   const [minValue, setMinValue] = useState("");
   const [maxValue, setMaxValue] = useState("");
-
   function submitHandler(e) {
     e.preventDefault();
 
@@ -20,7 +19,6 @@ function Search(props) {
       minValue,
       maxValue,
     };
-
     props.onFilter(filterData);
   }
 
@@ -31,7 +29,7 @@ function Search(props) {
           name="cars"
           className={classes.selectField}
           onChange={(e) => setCar(e.target.value)}
-          defaultValue={car}
+          value={car}
         />
         <input
           type="number"
