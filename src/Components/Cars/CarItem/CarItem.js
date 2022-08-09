@@ -45,31 +45,30 @@ function CarItem() {
 
   const images = [{ url: car1 }, { url: car2 }, { url: car3 }];
 
-  function deleteCar() {
-    fetch(
-      "https://car2go-985b5-default-rtdb.europe-west1.firebasedatabase.app/cars/" +
-        id +
-        ".json",
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => {
-        if (!res.ok) {
-          throw Error("Could not delete item!");
+  async function deleteCar() {
+    try {
+      const response = await fetch(
+        "https://car2go-985b5-default-rtdb.europe-west1.firebasedatabase.app/cars/" +
+          id +
+          ".json",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-        return res.json();
-      })
-      .then((data) => {
-        history.replace("/cars");
-      })
-      .catch((error) => {
-        setDeleteError(error.message);
-        setOpenModal(false);
-      });
+      );
+
+      if (!response.ok) {
+        throw Error("Could not delete item!");
+      }
+
+      const data = await response.json();
+      history.replace("/cars");
+    } catch (error) {
+      setDeleteError(error.message);
+      setOpenModal(false);
+    }
   }
 
   return (

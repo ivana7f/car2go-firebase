@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from "./AddCar.module.scss";
+import useHttp from "../../hooks/useHttp";
 
 function AddCar() {
   const [brand, setBrand] = useState();
@@ -17,7 +18,39 @@ function AddCar() {
   const [priceIsValid, setPriceIsValid] = useState(true);
 
   const [successAdding, setSuccessAdding] = useState(false);
-  const [errorAdding, setErrorAdding] = useState(false);
+
+  const carData = {
+    brand: brand,
+    model: model,
+    year: year,
+    engine_capacity: engine,
+    gearbox: gearbox,
+    fuel: fuel,
+    doors: doors,
+    seats: seats,
+    price: price,
+    ac: ac,
+    abs: abs,
+  };
+
+  function dataHandling() {
+    setSuccessAdding(true);
+  }
+
+  const {
+    error: errorAdding,
+    setError: setErrorAdding,
+    sendRequest,
+  } = useHttp(
+    {
+      url: "https://car2go-985b5-default-rtdb.europe-west1.firebasedatabase.app/cars.json",
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: carData,
+      errorMessage: "Failed adding!",
+    },
+    dataHandling
+  );
 
   function submitHandler(e) {
     e.preventDefault();
@@ -36,43 +69,7 @@ function AddCar() {
       setPriceIsValid(true);
     }
 
-    const carData = {
-      brand: brand,
-      model: model,
-      year: year,
-      engine_capacity: engine,
-      gearbox: gearbox,
-      fuel: fuel,
-      doors: doors,
-      seats: seats,
-      price: price,
-      ac: ac,
-      abs: abs,
-    };
-
-    //sendind data to server
-    fetch(
-      "https://car2go-985b5-default-rtdb.europe-west1.firebasedatabase.app/cars.json",
-      {
-        method: "POST",
-        body: JSON.stringify(carData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => {
-        if (!res.ok) {
-          throw Error("Could not send data");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setSuccessAdding(true);
-      })
-      .catch((error) => {
-        setErrorAdding(true);
-      });
+    sendRequest();
   }
 
   return (

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import classes from "./CarItem.module.scss";
+import useHttp from "../../../hooks/useHttp";
 
 function EditCar(props) {
   const car = props.car;
@@ -18,8 +19,37 @@ function EditCar(props) {
   const [price, setPrice] = useState(car.price);
   const [priceIsValid, setPriceIsValid] = useState(true);
 
-  const [successAdding, setSuccessAdding] = useState(false);
-  const [errorAdding, setErrorAdding] = useState(false);
+  const carData = {
+    brand: brand,
+    model: model,
+    year: year,
+    engine_capacity: car.engine_capacity,
+    gearbox: gearbox,
+    fuel: fuel,
+    doors: doors,
+    seats: seats,
+    price: price,
+    ac: ac,
+    abs: abs,
+  };
+
+  function dataHandling() {
+    props.setIsEditing(false);
+  }
+
+  const { error: errorAdding, sendRequest } = useHttp(
+    {
+      url:
+        "https://car2go-985b5-default-rtdb.europe-west1.firebasedatabase.app/cars/" +
+        id +
+        ".json",
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: carData,
+      errorMessage: "Failed editing!",
+    },
+    dataHandling
+  );
 
   function confirmEdit() {
     //validating inputs
@@ -36,46 +66,7 @@ function EditCar(props) {
       setPriceIsValid(true);
     }
 
-    const data = {
-      brand: brand,
-      model: model,
-      year: year,
-      engine_capacity: car.engine_capacity,
-      gearbox: gearbox,
-      fuel: fuel,
-      doors: doors,
-      seats: seats,
-      price: price,
-      ac: ac,
-      abs: abs,
-    };
-
-    //sendind data to server
-    fetch(
-      "https://car2go-985b5-default-rtdb.europe-west1.firebasedatabase.app/cars/" +
-        id +
-        ".json",
-      {
-        method: "PUT",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    )
-      .then((res) => {
-        if (!res.ok) {
-          throw Error("Could not send data");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        setSuccessAdding(true);
-        props.setIsEditing(false);
-      })
-      .catch((error) => {
-        setErrorAdding(true);
-      });
+    sendRequest();
   }
 
   function cancel() {

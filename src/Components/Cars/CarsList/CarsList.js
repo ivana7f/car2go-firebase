@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import classes from "./CarsList.module.scss";
 import car1 from "../../../img/car.png";
@@ -13,7 +13,10 @@ import ValuesContext from "../../../store/values-context";
 function CarsList(props) {
   const cars = props.cars;
   const Ctx = useContext(ValuesContext);
-  Ctx.setCarBrand("");
+
+  useEffect(() => {
+    Ctx.setCarBrand("");
+  }, []);
 
   if (cars.length === 0) {
     return <div className={classes.notFound}>No cars found</div>;

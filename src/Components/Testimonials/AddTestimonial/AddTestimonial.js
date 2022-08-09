@@ -1,15 +1,35 @@
 import React, { useState } from "react";
+import useHttp from "../../../hooks/useHttp";
 import classes from "./AddTestimonial.module.scss";
 import StarRating from "./StarRating/StarRating";
 
 function AddTestimonial(props) {
   const [rating, setRating] = useState(null);
   const [message, setMessage] = useState("");
-  const [error, setError] = useState(null);
+
+  const testimonial = {
+    rating: rating,
+    comment: message,
+  };
+
+  function dataHandling() {
+    props.onSubmitTestimonial();
+  }
 
   function ratingHandler(starRating) {
     setRating(starRating);
   }
+
+  const { error, setError, sendRequest } = useHttp(
+    {
+      url: "https://car2go-985b5-default-rtdb.europe-west1.firebasedatabase.app/reviews.json",
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: testimonial,
+      errorMessage: "Failed adding!",
+    },
+    dataHandling
+  );
 
   function submitHandler(e) {
     e.preventDefault();
@@ -19,34 +39,7 @@ function AddTestimonial(props) {
       return;
     }
 
-    const testimonial = {
-      rating: rating,
-      comment: message,
-    };
-
-    fetch(
-      "https://car2go-985b5-default-rtdb.europe-west1.firebasedatabase.app/reviews.json",
-      {
-        method: "POST",
-        body: JSON.stringify(testimonial),
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    )
-      .then((res) => {
-        if (!res.ok) {
-          throw Error("failed");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        props.onSubmitTestimonial();
-        setError(null);
-      })
-      .catch((err) => setError(err.message));
+    sendRequest();
   }
 
   return (
