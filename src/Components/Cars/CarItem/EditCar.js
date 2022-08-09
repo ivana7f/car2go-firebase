@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classes from "./CarItem.module.scss";
 import useHttp from "../../../hooks/useHttp";
+import SelectCars from "../../Inputs/SelectCars";
 
 function EditCar(props) {
   const car = props.car;
@@ -53,6 +54,9 @@ function EditCar(props) {
 
   function confirmEdit() {
     //validating inputs
+    if (brand === "") {
+      return;
+    }
     if (model.trim().length < 1) {
       setModelIsValid(false);
       return;
@@ -77,24 +81,12 @@ function EditCar(props) {
     <div className={classes.carDetails}>
       <div className={classes.detail}>
         <span> Brand:</span>
-        <select
+        <SelectCars
           className={classes.field}
           required
           value={brand}
           onChange={(e) => setBrand(e.target.value)}
-        >
-          <option value="Mercedes">Mercedes</option>
-          <option value="Audi">Audi</option>
-          <option value="BMW">BMW</option>
-          <option value="Volvo">Volvo</option>
-          <option value="Renault">Renault</option>
-          <option value="Opel">Opel</option>
-          <option value="Toyota">Toyota</option>
-          <option value="Citroen">Citroen</option>
-          <option value="Peugeot">Peugeot</option>
-          <option value="Hyundai">Hyundai</option>
-          <option value="Volkswagen">Volkswagen</option>
-        </select>
+        />
       </div>
       <div className={classes.detail}>
         <span>Model:</span>

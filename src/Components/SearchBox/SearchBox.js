@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import ValuesContext from "../../store/values-context";
+import SelectCars from "../Inputs/SelectCars";
 import classes from "./SearchBox.module.scss";
 
 function SearchBox() {
@@ -17,24 +18,11 @@ function SearchBox() {
     <div className={classes.box}>
       <form className={classes.form} onSubmit={submitHandler}>
         <label htmlFor="cars">Select car brand</label>
-        <select
+        <SelectCars
           id="cars"
           name="cars"
           onChange={(e) => valuesCtx.setCarBrand(e.target.value)}
-        >
-          <option value="">All brands</option>
-          <option value="Mercedes">Mercedes</option>
-          <option value="Audi">Audi</option>
-          <option value="BMW">BMW</option>
-          <option value="Volvo">Volvo</option>
-          <option value="Renault">Renault</option>
-          <option value="Opel">Opel</option>
-          <option value="Toyota">Toyota</option>
-          <option value="Citroen">Citroen</option>
-          <option value="Peugeot">Peugeot</option>
-          <option value="Hyundai">Hyundai</option>
-          <option value="Volkswagen">Volkswagen</option>
-        </select>
+        />
         <button>Search</button>
       </form>
     </div>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 // custom hook for sending GET requests
 function useFetch(url) {
@@ -6,7 +6,7 @@ function useFetch(url) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  async function fetchData() {
+  const fetchData = useCallback(async () => {
     setError(null);
     try {
       const response = await fetch(url, {
@@ -26,11 +26,11 @@ function useFetch(url) {
     }
 
     setIsLoading(false);
-  }
+  }, [url]);
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+  }, [fetchData]);
 
   return { data, isLoading, error };
 }

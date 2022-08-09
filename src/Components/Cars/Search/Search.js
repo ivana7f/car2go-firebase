@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import ValuesContext from "../../../store/values-context";
+import SelectCars from "../../Inputs/SelectCars";
 import classes from "./Search.module.scss";
 
 function Search(props) {
@@ -26,25 +27,12 @@ function Search(props) {
   return (
     <section className={classes.container}>
       <form className={classes.form} onSubmit={submitHandler}>
-        <select
+        <SelectCars
           name="cars"
           className={classes.selectField}
           onChange={(e) => setCar(e.target.value)}
           defaultValue={car}
-        >
-          <option value="">Car brand</option>
-          <option value="Mercedes">Mercedes</option>
-          <option value="Audi">Audi</option>
-          <option value="BMW">BMW</option>
-          <option value="Volvo">Volvo</option>
-          <option value="Renault">Renault</option>
-          <option value="Opel">Opel</option>
-          <option value="Toyota">Toyota</option>
-          <option value="Citroen">Citroen</option>
-          <option value="Peugeot">Peugeot</option>
-          <option value="Hyundai">Hyundai</option>
-          <option value="Volkswagen">Volkswagen</option>
-        </select>
+        />
         <input
           type="number"
           min="1"

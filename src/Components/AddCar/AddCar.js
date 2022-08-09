@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import classes from "./AddCar.module.scss";
 import useHttp from "../../hooks/useHttp";
+import SelectCars from "../Inputs/SelectCars";
 
 function AddCar() {
   const [brand, setBrand] = useState();
+  const [brandIsValid, setBrandIsValid] = useState(true);
   const [model, setModel] = useState();
   const [modelIsValid, setModelIsValid] = useState(true);
   const [year, setYear] = useState();
@@ -56,6 +58,10 @@ function AddCar() {
     e.preventDefault();
 
     //validating inputs
+    if (brand.trim().length < 1) {
+      setBrandIsValid(false);
+      return;
+    }
     if (model.trim().length < 1) {
       setModelIsValid(false);
       return;
@@ -106,25 +112,15 @@ function AddCar() {
               <label className={classes.label} htmlFor="brand">
                 Car brand
               </label>
-              <select
+              <input
                 id="brand"
-                className={classes.selectField}
+                className={classes.inputField}
                 required
                 onChange={(e) => setBrand(e.target.value)}
-              >
-                <option value="">Select brand</option>
-                <option value="Mercedes">Mercedes</option>
-                <option value="Audi">Audi</option>
-                <option value="BMW">BMW</option>
-                <option value="Volvo">Volvo</option>
-                <option value="Renault">Renault</option>
-                <option value="Opel">Opel</option>
-                <option value="Toyota">Toyota</option>
-                <option value="Citroen">Citroen</option>
-                <option value="Peugeot">Peugeot</option>
-                <option value="Hyundai">Hyundai</option>
-                <option value="Volkswagen">Volkswagen</option>
-              </select>
+              />
+              {!brandIsValid && (
+                <p className={classes.invalidInput}>Input not valid!</p>
+              )}
             </div>
 
             <div>
