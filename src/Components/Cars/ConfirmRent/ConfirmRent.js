@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./ConfirmRent.module.scss";
+import CurrencyContext from "../../../store/currency-context";
+import getSymbolFromCurrency from "currency-symbol-map";
 
 function ConfirmRent(props) {
   const [isConfirmed, setIsConfirmed] = useState(false);
+
+  const currencyCtx = useContext(CurrencyContext);
 
   function confirmRent() {
     setIsConfirmed(true);
@@ -39,7 +43,9 @@ function ConfirmRent(props) {
         <span>Total Days:</span> {props.rentData.days}
       </p>
       <p>
-        <span>Total Price:</span> {props.totalPrice}&euro;
+        <span>Total Price: </span>
+        {(props.totalPrice * currencyCtx.convertRate).toFixed(0)}
+        {getSymbolFromCurrency(currencyCtx.currency)}
       </p>
       {!isConfirmed && (
         <button onClick={confirmRent} className={classes.btn}>

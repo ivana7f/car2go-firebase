@@ -9,10 +9,13 @@ import { FaGasPump } from "react-icons/fa";
 import { BsGear } from "react-icons/bs";
 import { BsCalendarCheck } from "react-icons/bs";
 import ValuesContext from "../../../store/values-context";
+import CurrencyContext from "../../../store/currency-context";
+import getSymbolFromCurrency from "currency-symbol-map";
 
 function CarsList(props) {
   const cars = props.cars;
   const Ctx = useContext(ValuesContext);
+  const currencyCtx = useContext(CurrencyContext);
 
   useEffect(() => {
     Ctx.setCarBrand("");
@@ -64,7 +67,10 @@ function CarsList(props) {
             </div>
             <div className={`${classes.cardItem} ${classes.priceBox}`}>
               <div>
-                <p className={classes.price}>{car[1].price}&euro;</p>
+                <p className={classes.price}>
+                  {(car[1].price * currencyCtx.convertRate).toFixed(0)}
+                  {getSymbolFromCurrency(currencyCtx.currency)}
+                </p>
                 <p>per day</p>
               </div>
               <Link to={`/cars/${car[0]}`} className={classes.btn}>

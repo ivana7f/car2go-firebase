@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./CarItem.module.scss";
 import useFetch from "../../../hooks/useFetch";
+import CurrencyContext from "../../../store/currency-context";
+import getSymbolFromCurrency from "currency-symbol-map";
 
 function CarDetails(props) {
+  const currencyCtx = useContext(CurrencyContext);
   const { data } = useFetch(
     "https://car2go-985b5-default-rtdb.europe-west1.firebasedatabase.app/cars/" +
       props.id +
@@ -40,7 +43,8 @@ function CarDetails(props) {
         <span>Year:</span> {car.year}
       </div>
       <div className={classes.detail}>
-        <span>Price:</span> {car.price}&euro; per day
+        <span>Price:</span> {(car.price * currencyCtx.convertRate).toFixed(0)}
+        {getSymbolFromCurrency(currencyCtx.currency)} per day
       </div>
     </div>
   );

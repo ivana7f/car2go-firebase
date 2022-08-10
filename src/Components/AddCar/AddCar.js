@@ -57,17 +57,17 @@ function AddCar() {
     e.preventDefault();
 
     //validating inputs
-    if (brand.trim().length < 1) {
+    if (brand.trim().length < 1 || brand.trim().length > 15) {
       setBrandIsValid(false);
       return;
     }
-    if (model.trim().length < 1) {
+    if (model.trim().length < 1 || model.trim().length > 40) {
       setModelIsValid(false);
       return;
     } else {
       setModelIsValid(true);
     }
-    if (price < 2) {
+    if (price < 1 || price > 1000) {
       setPriceIsValid(false);
       return;
     } else {

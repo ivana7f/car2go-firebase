@@ -8,14 +8,17 @@ import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./store/auth-context";
 import { ValuesContextProvider } from "./store/values-context";
+import { CurrencyContextProvider } from "./store/currency-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ValuesContextProvider>
-    <AuthContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </AuthContextProvider>
-  </ValuesContextProvider>
+  <CurrencyContextProvider>
+    <ValuesContextProvider>
+      <AuthContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthContextProvider>
+    </ValuesContextProvider>
+  </CurrencyContextProvider>
 );

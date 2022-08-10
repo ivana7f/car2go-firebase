@@ -5,6 +5,7 @@ import classes from "./Header.module.scss";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseOutline } from "react-icons/io5";
 import logo from "../../img/logo_car2go1.png";
+import Currency from "./Currency";
 
 function Header() {
   const authCtx = useContext(AuthContext);
@@ -75,6 +76,7 @@ function Header() {
             </li>
           )}
         </div>
+        <Currency />
       </header>
       <button className={classes.btnMobile}>
         {!showMenu && (

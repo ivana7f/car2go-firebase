@@ -14,7 +14,7 @@ function SelectCars(props) {
 
   return (
     <select {...props}>
-      <option value="">Select brand</option>
+      <option value="">All brands</option>
       {[...brands].map((brand) => (
         <option value={brand} key={brand}>
           {brand}

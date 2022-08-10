@@ -1,15 +1,18 @@
 import React, { useContext, useState } from "react";
 import ValuesContext from "../../../store/values-context";
+import CurrencyContext from "../../../store/currency-context";
 import SelectCars from "../../Inputs/SelectCars";
 import classes from "./Search.module.scss";
 
 function Search(props) {
   const Ctx = useContext(ValuesContext);
+  const currencyCtx = useContext(CurrencyContext);
 
   const [car, setCar] = useState(Ctx.carBrand);
   const [sort, setSort] = useState("");
   const [minValue, setMinValue] = useState("");
   const [maxValue, setMaxValue] = useState("");
+
   function submitHandler(e) {
     e.preventDefault();
 
@@ -33,15 +36,15 @@ function Search(props) {
         />
         <input
           type="number"
-          min="1"
-          placeholder="Lowest price ($)"
+          min="0"
+          placeholder={`Lowest price (${currencyCtx.currency})`}
           className={classes.inputField}
           onChange={(e) => setMinValue(e.target.value)}
         />
         <input
           type="number"
           min="1"
-          placeholder="Highest price ($)"
+          placeholder={`Highest price (${currencyCtx.currency})`}
           className={classes.inputField}
           onChange={(e) => setMaxValue(e.target.value)}
         />

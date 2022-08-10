@@ -7,9 +7,11 @@ import useFetch from "../../hooks/useFetch";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import NotFound from "../NotFound/NotFound";
 import ValuesContext from "../../store/values-context";
+import CurrencyContext from "../../store/currency-context";
 
 function Cars() {
   const Ctx = useContext(ValuesContext);
+  const currencyCtx = useContext(CurrencyContext);
 
   const {
     data: cars,
@@ -49,13 +51,13 @@ function Cars() {
     }
     if (filterData.minValue !== "") {
       filteredArray = filteredArray.filter(
-        (car) => car[1].price >= filterData.minValue
+        (car) => car[1].price * currencyCtx.convertRate >= filterData.minValue
       );
     }
     if (filterData.maxValue !== "") {
-      filteredArray = filteredArray.filter(
-        (car) => car[1].price <= filterData.maxValue
-      );
+      filteredArray = filteredArray.filter((car) => {
+        return car[1].price * currencyCtx.convertRate <= filterData.maxValue;
+      });
     }
     if (filterData.sort === "lowest") {
       filteredArray = filteredArray.sort(
