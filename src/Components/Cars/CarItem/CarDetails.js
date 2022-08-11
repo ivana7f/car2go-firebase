@@ -12,6 +12,8 @@ function CarDetails(props) {
       ".json"
   );
 
+  const euroSign = "\u20AC";
+
   const car = Object.fromEntries(data);
   return (
     <div className={classes.carDetails}>
@@ -43,8 +45,14 @@ function CarDetails(props) {
         <span>Year:</span> {car.year}
       </div>
       <div className={classes.detail}>
-        <span>Price:</span> {(car.price * currencyCtx.convertRate).toFixed(0)}
-        {getSymbolFromCurrency(currencyCtx.currency)} per day
+        <span>Price:</span>{" "}
+        {currencyCtx.errorGettingCurrency
+          ? car.price
+          : (car.price * currencyCtx.convertRate).toFixed(0)}
+        {currencyCtx.errorGettingCurrency
+          ? euroSign
+          : getSymbolFromCurrency(currencyCtx.currency)}
+        per day
       </div>
     </div>
   );

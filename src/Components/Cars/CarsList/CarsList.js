@@ -17,6 +17,8 @@ function CarsList(props) {
   const Ctx = useContext(ValuesContext);
   const currencyCtx = useContext(CurrencyContext);
 
+  const euroSign = "\u20AC";
+
   useEffect(() => {
     Ctx.setCarBrand("");
   }, []);
@@ -68,8 +70,12 @@ function CarsList(props) {
             <div className={`${classes.cardItem} ${classes.priceBox}`}>
               <div>
                 <p className={classes.price}>
-                  {(car[1].price * currencyCtx.convertRate).toFixed(0)}
-                  {getSymbolFromCurrency(currencyCtx.currency)}
+                  {currencyCtx.errorGettingCurrency
+                    ? car[1].price
+                    : (car[1].price * currencyCtx.convertRate).toFixed(0)}
+                  {currencyCtx.errorGettingCurrency
+                    ? euroSign
+                    : getSymbolFromCurrency(currencyCtx.currency)}
                 </p>
                 <p>per day</p>
               </div>

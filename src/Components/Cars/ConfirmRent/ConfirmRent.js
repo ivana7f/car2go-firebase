@@ -8,6 +8,8 @@ function ConfirmRent(props) {
 
   const currencyCtx = useContext(CurrencyContext);
 
+  const euroSign = "\u20AC";
+
   function confirmRent() {
     setIsConfirmed(true);
   }
@@ -44,8 +46,12 @@ function ConfirmRent(props) {
       </p>
       <p>
         <span>Total Price: </span>
-        {(props.totalPrice * currencyCtx.convertRate).toFixed(0)}
-        {getSymbolFromCurrency(currencyCtx.currency)}
+        {currencyCtx.errorGettingCurrency
+          ? props.totalPrice
+          : (props.totalPrice * currencyCtx.convertRate).toFixed(0)}
+        {currencyCtx.errorGettingCurrency
+          ? euroSign
+          : getSymbolFromCurrency(currencyCtx.currency)}
       </p>
       {!isConfirmed && (
         <button onClick={confirmRent} className={classes.btn}>
