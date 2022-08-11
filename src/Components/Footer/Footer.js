@@ -23,7 +23,7 @@ function Footer() {
           <h2 className={classes.footerHeading}>Sitemap</h2>
           <ul className={classes.footerList}>
             <li>
-              <HashLink smooth to={"/#top"} className={classes.footerLink}>
+              <HashLink to={"/#top"} className={classes.footerLink}>
                 Home
               </HashLink>
             </li>

@@ -16,6 +16,7 @@ import NotFound from "../NotFound/NotFound";
 const settings = {
   dots: true,
   infinite: true,
+  autoplay: true,
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
