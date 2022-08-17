@@ -63,7 +63,6 @@ function CarItem() {
         throw Error("Could not delete item!");
       }
 
-      const data = await response.json();
       history.replace("/cars");
     } catch (error) {
       setDeleteError(error.message);
