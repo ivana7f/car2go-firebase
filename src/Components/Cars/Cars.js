@@ -100,7 +100,7 @@ function Cars() {
       {!error && !isLoading && (
         <Pagination
           carsPerPage={carsPerPage}
-          totalCars={isFiltered ? filteredCars.length : cars.length}
+          totalCars={filteredCars.length}
           paginate={paginate}
         />
       )}
