@@ -12,9 +12,14 @@
     font-size: 2rem;
     color: $darker-color;
 
-    a {
+    .number {
       cursor: pointer;
       padding: 0.5rem;
+    }
+
+    .active {
+      background-color: $light-color;
+      border-bottom: 2px solid $darker-color;
     }
   }
 }

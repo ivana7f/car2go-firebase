@@ -102,6 +102,7 @@ function Cars() {
           carsPerPage={carsPerPage}
           totalCars={isFiltered ? filteredCars.length : cars.length}
           paginate={paginate}
+          currentPage={currentPage}
         />
       )}
     </div>

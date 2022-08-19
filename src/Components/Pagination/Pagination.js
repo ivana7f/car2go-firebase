@@ -14,7 +14,14 @@ function Pagination(props) {
       <ul>
         {pageNumbers.map((number) => (
           <li key={number}>
-            <a onClick={() => paginate(number)}>{number}</a>
+            <a
+              onClick={() => paginate(number)}
+              className={`${classes.number} ${
+                number === props.currentPage ? classes.active : null
+              }`}
+            >
+              {number}
+            </a>
           </li>
         ))}
       </ul>
