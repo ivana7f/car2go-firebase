@@ -71,7 +71,7 @@ function Header() {
                 onClick={() => authCtx.logout()}
                 className={`${classes.mainNavLink} ${classes.navBtnColor}`}
               >
-                Logout
+                Log Out
               </Link>
             </li>
           )}
